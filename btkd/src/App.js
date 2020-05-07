@@ -1,26 +1,62 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Header from './components/Header.js';
+import Nav from './components/Nav.js';
+import Main from './components/Main.js';
+import Footer from './components/Footer.js';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      view: {
+        page: 'home',
+        pageTite: ''
+      }
+    }
+  }
+
+  handleView = (view) => {
+    let pageTite = '';
+
+    switch(view) {
+      case 'home':
+        pageTite = 'Bastrop Unified Tae Kwon-Do'
+        break
+      case 'about':
+        pageTite = 'About'
+        break
+      case 'trainers':
+        pageTite = 'Our Trainers'
+        break
+      case 'calendar':
+        pageTite = 'Calendar'
+        break
+      case 'contact':
+        pageTite = 'Contact'
+        break
+        default:
+        break
+    }
+    this.setState({
+      view: {
+        page: view,
+        pageTite: pageTite
+      }
+    })
+  }
+
+  render() {
+    return (
+      <div>
+      <Header />
+
+      <Nav handleView={this.handleView}/>
+
+      <Footer />
+      </div>
+    )
+  }
 }
 
 export default App;
