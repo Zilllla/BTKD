@@ -4,6 +4,7 @@ import Header from './components/Header.js';
 import Nav from './components/Nav.js';
 import Main from './components/Main.js';
 import Footer from './components/Footer.js';
+import About from './components/About.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class App extends React.Component {
     this.state = {
       view: {
         page: 'home',
-        pageTite: ''
+        pageTite: 'Bastrop Unified Tae Kwon-Do'
       }
     }
   }
@@ -52,6 +53,8 @@ class App extends React.Component {
       <Header />
 
       <Nav handleView={this.handleView}/>
+
+      <Main />
 
       <Footer />
       </div>
